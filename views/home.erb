@@ -1,0 +1,34 @@
+<head>
+  <title>KICKBALL</title>
+  <link rel="stylesheet" href="/home.css" />
+</head>
+
+<body>
+
+
+
+  <h1>KICKBALL</h1>
+  <h3> TEAMS </h3>
+  <ul id="home_ul">
+    <li><a href="http://localhost:9393/team/Flinestone Fire">F.F.'s</a></li>
+    <li><a href="http://localhost:9393/team/Simpson Slammers">S.S.'s</a></li>
+    <li><a href="http://localhost:9393/team/Jetson Jets">J.J.'s</a></li>
+    <li><a href="http://localhost:9393/team/Griffin Goats">G.G.'s</a></li>
+  </ul>
+
+  <h3>Player Positions</h3>
+<ul style="list-style:none" id="position_ul">
+    <li><a href="http://localhost:9393/players/Catcher">Catcher</a></li>
+    <li><a href="http://localhost:9393/players/Pitcher">Pitcher</a></li><li><a href="http://localhost:9393/players/1st Base">1st</a></li><li><a href="http://localhost:9393/players/2nd Base">2nd</a></li><li><a href="http://localhost:9393/players/3rd Base">3rd</a></li><li><a href="http://localhost:9393/players/Shortstop">ShortStop</a></li><li><a href="http://localhost:9393/players/Right Field">R.Field</a></li><li><a href="http://localhost:9393/players/Left Field">L.Field</a></li>
+  </ul>
+
+  <h3>Full Roster</h3>
+
+  <ul id="every_page_ul" style="list-style:none">
+  <% @player_data.each do |playa| %>
+    <li><%= "#{playa["last_name"]}, #{playa["first_name"]}: #{playa["position"]}" %>
+    </li>
+    <% end %>
+  </ul>
+</body>
+</html>

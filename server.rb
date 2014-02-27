@@ -1,6 +1,28 @@
 require 'sinatra'
 require 'csv'
 
+get '/' do
+
+@player_data=[]
+
+ CSV.foreach('rosters.csv', headers: true) do |row|
+  @player_data<<row.to_hash
+end
+
+# @playa_position = []
+# @player_data.each do |playa|
+#   if playa["position"] == params[:position]
+#     @playa_position << playa
+#   end
+# end
+
+  @page_title = params[:position]
+
+  erb :home
+end
+
+
+#ABOVE^ IS HOME PAGE STUFF . BELOW v IS PLAYER POSITIONS AND TEAM PAGE STUFF
 get '/players/:position' do
  @player_data=[]
 
