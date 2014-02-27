@@ -1,67 +1,50 @@
 require 'sinatra'
 require 'csv'
- get '/' do
-   @player_data=[]
-	CSV.foreach('rosters.csv', headers: true) do |row|
-		@player_data<<row.to_hash
-	end
-	#put
-   erb :index
- end
 
- get '/Simpson Slammers' do
-   @player_data=[]
-	CSV.foreach('rosters.csv', headers: true) do |row|
-		@player_data<<row.to_hash
-	end
-	#put
-   erb :team2
+get '/players/:position' do
+ @player_data=[]
 
- end
+ CSV.foreach('rosters.csv', headers: true) do |row|
+  @player_data<<row.to_hash
+end
 
- get '/Flinestone_Fire' do
-   @player_data=[]
-	CSV.foreach('rosters.csv', headers: true) do |row|
-		@player_data<<row.to_hash
-	end
-	#put
-   erb :team3
+@playa_position = []
+@player_data.each do |playa|
+  if playa["position"] == params[:position]
+    @playa_position << playa
+  end
+end
 
- end
+  @page_title = params[:position]
+  erb :players
+end
 
- get '/Griffin_Goats' do
-   @player_data=[]
-	CSV.foreach('rosters.csv', headers: true) do |row|
-		@player_data<<row.to_hash
-	end
-	#put
-   erb :team4
+get '/team/:team' do
+ @playa_position=[]
+ @player_data=[]
 
- end
+ CSV.foreach('rosters.csv', headers: true) do |row|
+  @player_data<<row.to_hash
+end
+
+@player_data.each do |playa|
+  if playa["team"] == params[:team]
+    @playa_position << playa
+  end
+end
+
+  @page_title = params[:team]
+  erb :players
+end
 
 
-#def player_report #(team_name, player_data)
-	#cib=''
-	# @player_data=[]
-	# CSV.foreach('rosters.csv', headers: true) do |row|
-	# 	@player_data<<row.to_hash
-	# end
-	# #puts player_data
-#end
-
-# 
-
-# def selection 
-	# @player_data.each do |item|
-	# 	if item["team"] == "Jetson Jets"
-	# 		puts "#{item["last_name"]}, #{item["first_name"]}: #{item["position"]}"
-# 		end
-# 	end
+# get '/teams/:team_name' do
+#  @player_data=[]
+#  CSV.foreach('rosters.csv', headers: true) do |row|
+#   @player_data<<row.to_hash
 # end
-
-
-
-
-
+# 	#put
+#   page_title = params[:team_name]
+#   erb :team2
 
 

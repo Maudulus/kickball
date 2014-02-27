@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>@page_title</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+
+<body>
+
+
+
+  <h1>TODO list</h1>
+
+  <ul>
+    <% @playa_position.each do |playa| %>
+    <li>
+    <%= "#{playa["last_name"]}, #{playa["first_name"]}: #{playa["position"]}" %>
+    </li>
+    <% end %>
+  </ul>
+</body>
+</html>
+
+
+
+
+
+
+
